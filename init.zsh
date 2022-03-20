@@ -48,7 +48,7 @@ p6df::modules::pgsql::external::brew() {
 ######################################################################
 p6df::modules::pgsql::home::symlink() {
 
-  ln -sf $P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-db/share/pgsqlrc $P6_DFZ_DATA_DIR/.pgsqlrc
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$P6_DFZ_DATA_DIR/.pgsqlrc"
 }
 
 ######################################################################
