@@ -51,17 +51,6 @@ p6df::modules::pgsql::home::symlink() {
   p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$P6_DFZ_DATA_DIR/.pgsqlrc"
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::init()
-#
-#>
-######################################################################
-p6df::modules::pgsql::init() {
-
-}
-
 # To migrate existing data from a previous major version of PostgreSQL run:
 #   brew postgresql-upgrade-database
 #
