@@ -1,4 +1,4 @@
-
+# shellcheck shell=bash
 ######################################################################
 #<
 #
@@ -37,6 +37,8 @@ p6df::modules::pgsql::external::brew() {
   brew install postgis
 
   brew install --cask pgadmin4
+
+  p6_return_void
 }
 
 ######################################################################
@@ -44,11 +46,42 @@ p6df::modules::pgsql::external::brew() {
 #
 # Function: p6df::modules::pgsql::home::symlink()
 #
+#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::pgsql::home::symlink() {
 
   p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$P6_DFZ_DATA_DIR/.pgsqlrc"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::db::start()
+#
+#>
+######################################################################
+p6df::modules::pgsql::db::start() {
+
+  pg_ctl -D /usr/local/var/postgres start
+  
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::db::start()
+#
+#>
+######################################################################
+p6df::modules::pgsql::db::start() {
+
+  pg_ctl -D /usr/local/var/postgres stop
+
+  p6_return_void
 }
 
 # To migrate existing data from a previous major version of PostgreSQL run:
