@@ -73,11 +73,11 @@ p6df::modules::pgsql::db::start() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::db::start()
+# Function: p6df::modules::pgsql::db::stop()
 #
 #>
 ######################################################################
-p6df::modules::pgsql::db::start() {
+p6df::modules::pgsql::db::stop() {
 
   pg_ctl -D /usr/local/var/postgres stop
 
