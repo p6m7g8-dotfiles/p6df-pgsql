@@ -84,6 +84,15 @@ p6df::modules::pgsql::db::stop() {
   p6_return_void
 }
 
+p6df::modules::pgsql::env::prompt::info() {
+
+  local ver=$(postgres --version | head -1)
+
+  echo "pg: $ver"
+
+  p6_return_void
+}
+
 # To migrate existing data from a previous major version of PostgreSQL run:
 #   brew postgresql-upgrade-database
 #
