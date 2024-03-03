@@ -17,14 +17,17 @@ p6df::modules::pgsql::deps() {
 #
 # Function: p6df::modules::pgsql::external::brew()
 #
-#  Environment:	 PKG_CONFIG_PATH
 #>
 ######################################################################
 p6df::modules::pgsql::external::brew() {
 
-  brew install postgresql@16
-  p6_env_export "PKG_CONFIG_PATH", "/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
-  p6_path_if "/opt/homebrew/opt/postgresql@16/bin"
+  local ver
+  for ver in 13 14 15 16; do
+    brew install postgresql@$ver
+  done
+
+#  brew install pgrouting
+#  brew install postgis
 
   brew install pg_top
   brew install pgbadger
@@ -32,14 +35,28 @@ p6df::modules::pgsql::external::brew() {
   brew install pgcli
   brew install pgformatter
   brew install pgpdump
-#  brew install pgrouting
   brew install pgtoolkit
   brew install pgtune
 
   brew install check_postgres
-#  brew install postgis
 
   brew install --cask pgadmin4
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::init()
+#
+#  Environment:	 PKG_CONFIG_PATH
+#>
+######################################################################
+p6df::modules::pgsql::init() {
+
+  p6_env_export "PKG_CONFIG_PATH" "/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
+  p6_path_if "/opt/homebrew/opt/postgresql@16/bin"
 
   p6_return_void
 }
