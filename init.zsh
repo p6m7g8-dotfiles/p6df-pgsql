@@ -17,11 +17,14 @@ p6df::modules::pgsql::deps() {
 #
 # Function: p6df::modules::pgsql::external::brew()
 #
+#  Environment:	 PKG_CONFIG_PATH
 #>
 ######################################################################
 p6df::modules::pgsql::external::brew() {
 
   brew install postgresql@16
+  p6_env_export "PKG_CONFIG_PATH", "/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
+  p6_path_if "/opt/homebrew/opt/postgresql@16/bin"
 
   brew install pg_top
   brew install pgbadger
