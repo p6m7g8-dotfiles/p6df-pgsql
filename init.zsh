@@ -21,7 +21,7 @@ p6df::modules::pgsql::deps() {
 ######################################################################
 p6df::modules::pgsql::external::brew() {
 
-  brew install postgresql
+  brew install postgresql@16
 
   brew install pg_top
   brew install pgbadger
@@ -29,12 +29,12 @@ p6df::modules::pgsql::external::brew() {
   brew install pgcli
   brew install pgformatter
   brew install pgpdump
-  brew install pgrouting
+#  brew install pgrouting
   brew install pgtoolkit
   brew install pgtune
 
   brew install check_postgres
-  brew install postgis
+#  brew install postgis
 
   brew install --cask pgadmin4
 
@@ -61,12 +61,13 @@ p6df::modules::pgsql::home::symlink() {
 #
 # Function: p6df::modules::pgsql::db::start()
 #
+#  Environment:	 LC_ALL
 #>
 ######################################################################
 p6df::modules::pgsql::db::start() {
 
-  pg_ctl -D /usr/local/var/postgres start
-  
+  LC_ALL="C" /opt/homebrew/opt/postgresql@16/bin/postgres -D /opt/homebrew/var/postgresql@16 start
+
   p6_return_void
 }
 
@@ -75,15 +76,23 @@ p6df::modules::pgsql::db::start() {
 #
 # Function: p6df::modules::pgsql::db::stop()
 #
+#  Environment:	 LC_ALL
 #>
 ######################################################################
 p6df::modules::pgsql::db::stop() {
 
-  pg_ctl -D /usr/local/var/postgres stop
-
+  LC_ALL="C" /opt/homebrew/opt/postgresql@16/bin/postgres -D /opt/homebrew/var/postgresql@16 stop
+ 
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::env::prompt::info()
+#
+#>
+######################################################################
 p6df::modules::pgsql::env::prompt::info() {
 
   local ver=$(postgres --version | head -1)
@@ -93,25 +102,28 @@ p6df::modules::pgsql::env::prompt::info() {
   p6_return_void
 }
 
-# To migrate existing data from a previous major version of PostgreSQL run:
-#   brew postgresql-upgrade-database
-#
 # This formula has created a default database cluster with:
-#   initdb --locale=C -E UTF-8 /usr/local/var/postgres
+#  initdb --locale=C -E UTF-8 /opt/homebrew/var/postgresql@16
 # For more details, read:
-#   https://www.postgresql.org/docs/12/app-initdb.html
+#  https://www.postgresql.org/docs/16/app-initdb.html
 #
-# To have launchd start postgresql now and restart at login:
-#   brew services start postgresql
+# postgresql@16 is keg-only, which means it was not symlinked into /opt/homebrew,
+# because this is an alternate version of another formula.
+#
+# If you need to have postgresql@16 first in your PATH, run:
+#  echo 'export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"' >> ~/.zshrc
+#
+# For compilers to find postgresql@16 you may need to set:
+#  export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+#  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
+#
+# For pkg-config to find postgresql@16 you may need to set:
+#  export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
+#
+# To start postgresql@16 now and restart at login:
+#  brew services start postgresql@16
 # Or, if you don't want/need a background service you can just run:
-#   pg_ctl -D /usr/local/var/postgres start
-
-# The config file: /usr/local/etc/pgbouncer.ini is in the "ini" format and you
-# will need to edit it for your particular setup. See:
-# https://pgbouncer.github.io/config.html
-
-# The auth_file option should point to the /usr/local/etc/userlist.txt file which
-# can be populated by the /usr/local/opt/pgbouncer/bin/mkauth.py script.
+#  LC_ALL="C" /opt/homebrew/opt/postgresql@16/bin/postgres -D /opt/homebrew/var/postgresql@16
 
 # To have launchd start pgbouncer now and restart at login:
 #   brew services start pgbouncer
