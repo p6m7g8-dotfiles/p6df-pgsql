@@ -50,6 +50,7 @@
 - p6df::modules::pgsql::env::prompt::info()
 - p6df::modules::pgsql::external::brew()
 - p6df::modules::pgsql::home::symlink()
+- p6df::modules::pgsql::init()
 
 
 
