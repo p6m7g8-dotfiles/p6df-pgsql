@@ -22,12 +22,13 @@ p6df::modules::pgsql::deps() {
 p6df::modules::pgsql::external::brew() {
 
   local ver
-  for ver in 13 14 15 16; do
-    brew install postgresql@$ver
-  done
+#  for ver in 13 14 15 16; do
+#    brew install postgresql@$ver
+#  done
 
-#  brew install pgrouting
-#  brew install postgis
+
+  brew install pgrouting
+  brew install postgis
 
   brew install pg_top
   brew install pgbadger
@@ -55,8 +56,8 @@ p6df::modules::pgsql::external::brew() {
 ######################################################################
 p6df::modules::pgsql::init() {
 
-  p6_env_export "PKG_CONFIG_PATH" "/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
-  p6_path_if "/opt/homebrew/opt/postgresql@16/bin"
+  p6_env_export "PKG_CONFIG_PATH" "/opt/homebrew/opt/postgresql@14/lib/pkgconfig"
+  p6_path_if "/opt/homebrew/opt/postgresql@14/bin"
 
   p6_return_void
 }
@@ -86,7 +87,7 @@ p6df::modules::pgsql::home::symlink() {
 ######################################################################
 p6df::modules::pgsql::db::start() {
 
-  LC_ALL="C" /opt/homebrew/opt/postgresql@16/bin/postgres -D /opt/homebrew/var/postgresql@16 start
+  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14 start
 
   p6_return_void
 }
@@ -101,7 +102,7 @@ p6df::modules::pgsql::db::start() {
 ######################################################################
 p6df::modules::pgsql::db::stop() {
 
-  LC_ALL="C" /opt/homebrew/opt/postgresql@16/bin/postgres -D /opt/homebrew/var/postgresql@16 stop
+  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14 stop
  
   p6_return_void
 }
@@ -123,27 +124,27 @@ p6df::modules::pgsql::env::prompt::info() {
 }
 
 # This formula has created a default database cluster with:
-#  initdb --locale=C -E UTF-8 /opt/homebrew/var/postgresql@16
+#  initdb --locale=C -E UTF-8 /opt/homebrew/var/postgresql@14
 # For more details, read:
-#  https://www.postgresql.org/docs/16/app-initdb.html
+#  https://www.postgresql.org/docs/14/app-initdb.html
 #
-# postgresql@16 is keg-only, which means it was not symlinked into /opt/homebrew,
+# postgresql@14 is keg-only, which means it was not symlinked into /opt/homebrew,
 # because this is an alternate version of another formula.
 #
-# If you need to have postgresql@16 first in your PATH, run:
-#  echo 'export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"' >> ~/.zshrc
+# If you need to have postgresql@14 first in your PATH, run:
+#  echo 'export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"' >> ~/.zshrc
 #
-# For compilers to find postgresql@16 you may need to set:
-#  export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
-#  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
+# For compilers to find postgresql@14 you may need to set:
+#  export LDFLAGS="-L/opt/homebrew/opt/postgresql@14/lib"
+#  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@14/include"
 #
-# For pkg-config to find postgresql@16 you may need to set:
-#  export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
+# For pkg-config to find postgresql@14 you may need to set:
+#  export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@14/lib/pkgconfig"
 #
-# To start postgresql@16 now and restart at login:
-#  brew services start postgresql@16
+# To start postgresql@14 now and restart at login:
+#  brew services start postgresql@14
 # Or, if you don't want/need a background service you can just run:
-#  LC_ALL="C" /opt/homebrew/opt/postgresql@16/bin/postgres -D /opt/homebrew/var/postgresql@16
+#  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14
 
 # To have launchd start pgbouncer now and restart at login:
 #   brew services start pgbouncer
