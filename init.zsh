@@ -42,6 +42,8 @@ p6df::modules::pgsql::external::brew() {
   brew install check_postgres
 
   brew install --cask pgadmin4
+  brew install --cask postico
+  brew install --cask dbeaver
 
   p6_return_void
 }
