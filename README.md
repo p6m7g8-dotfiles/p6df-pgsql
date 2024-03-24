@@ -10,8 +10,7 @@
   - [Summary](#summary)
   - [Contributing](#contributing)
   - [Code of Conduct](#code-of-conduct)
-  - [Changes](#changes)
-    - [Usage](#usage)
+  - [Usage](#usage)
   - [Author](#author)
 
 ### Badges
@@ -34,26 +33,41 @@
 
 - [Code of Conduct](https://github.com/p6m7g8/.github/blob/master/CODE_OF_CONDUCT.md)
 
-## Changes
-
-- [Change Log](CHANGELOG.md)
-
 ## Usage
+
+
+### Aliases
+
+
+### Functions
 
 ### p6df-pgsql:
 
 #### p6df-pgsql/init.zsh:
 
-- p6df::modules::pgsql::db::start()
-- p6df::modules::pgsql::db::stop()
 - p6df::modules::pgsql::deps()
 - p6df::modules::pgsql::env::prompt::info()
 - p6df::modules::pgsql::external::brew()
 - p6df::modules::pgsql::home::symlink()
-- p6df::modules::pgsql::init()
+- p6df::modules::pgsql::init(_module, dir)
+
+
+### p6df-pgsql/lib:
+
+#### p6df-pgsql/lib/cli.sh:
+
+- p6df::modules::pgsql::cli::start()
+- p6df::modules::pgsql::cli::stop()
 
 
 
+## Hier
+```text
+.
+└── cli.sh
+
+1 directory, 1 file
+```
 ## Author
 
 Philip M . Gollucci <pgollucci@p6m7g8.com>

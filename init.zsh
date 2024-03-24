@@ -23,28 +23,28 @@ p6df::modules::pgsql::external::brew() {
 
   local ver
 #  for ver in 13 14 15 16; do
-#    brew install postgresql@$ver
+#    p6df::modules::homebrew::cli::brew::install postgresql@$ver
 #  done
 
 
-  brew install pgrouting
-  brew install postgis
+  p6df::modules::homebrew::cli::brew::install pgrouting
+  p6df::modules::homebrew::cli::brew::install postgis
 
-  brew install pg_top
-  brew install pgbadger
-  brew install pgbouncer
-  brew install pgcli
-  brew install pgformatter
-  brew install pgpdump
-  brew install pgtoolkit
-  brew install pgtune
+  p6df::modules::homebrew::cli::brew::install pg_top
+  p6df::modules::homebrew::cli::brew::install pgbadger
+  p6df::modules::homebrew::cli::brew::install pgbouncer
+  p6df::modules::homebrew::cli::brew::install pgcli
+  p6df::modules::homebrew::cli::brew::install pgformatter
+  p6df::modules::homebrew::cli::brew::install pgpdump
+  p6df::modules::homebrew::cli::brew::install pgtoolkit
+  p6df::modules::homebrew::cli::brew::install pgtune
 
-  brew install check_postgres
+  p6df::modules::homebrew::cli::brew::install check_postgres
 
-  brew install --cask pgadmin4
-  brew install --cask postico
-  brew install --cask dbeaver
-  brew install --cask datagrip
+  p6df::modules::homebrew::cli::brew::install --cask pgadmin4
+  p6df::modules::homebrew::cli::brew::install --cask postico
+  p6df::modules::homebrew::cli::brew::install --cask dbeaver
+  p6df::modules::homebrew::cli::brew::install --cask datagrip
 
   p6_return_void
 }
@@ -52,15 +52,24 @@ p6df::modules::pgsql::external::brew() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::init()
+# Function: p6df::modules::pgsql::init(_module, dir)
 #
-#  Environment:	 PKG_CONFIG_PATH
+#  Args:
+#	_module -
+#	dir -
+#
+#  Environment:	 HOMEBREW_PREFIX PKG_CONFIG_PATH
 #>
 ######################################################################
 p6df::modules::pgsql::init() {
+  local _module="$1"
+  local dir="$2"
 
-  p6_env_export "PKG_CONFIG_PATH" "/opt/homebrew/opt/postgresql@14/lib/pkgconfig"
-  p6_path_if "/opt/homebrew/opt/postgresql@14/bin"
+  p6_bootstrap "$dir"
+
+  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@14"
+  p6_env_export "PKG_CONFIG_PATH" "$postgres_dir/lib/pkgconfig"
+  p6_path_if "$postgres_dir/bin"
 
   p6_return_void
 }
@@ -77,36 +86,6 @@ p6df::modules::pgsql::home::symlink() {
 
   p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$P6_DFZ_DATA_DIR/.pgsqlrc"
 
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::db::start()
-#
-#  Environment:	 LC_ALL
-#>
-######################################################################
-p6df::modules::pgsql::db::start() {
-
-  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14 start
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::db::stop()
-#
-#  Environment:	 LC_ALL
-#>
-######################################################################
-p6df::modules::pgsql::db::stop() {
-
-  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14 stop
- 
   p6_return_void
 }
 
