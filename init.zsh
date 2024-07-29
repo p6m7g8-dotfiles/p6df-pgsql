@@ -43,7 +43,7 @@ p6df::modules::pgsql::external::brew() {
 
   p6df::modules::homebrew::cli::brew::install --cask pgadmin4
   p6df::modules::homebrew::cli::brew::install --cask postico
-  p6df::modules::homebrew::cli::brew::install --cask dbeaver
+  p6df::modules::homebrew::cli::brew::install --cask dbeaver-community
   p6df::modules::homebrew::cli::brew::install --cask datagrip
 
   p6_return_void
