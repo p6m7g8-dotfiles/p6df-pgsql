@@ -37,7 +37,6 @@ p6df::modules::pgsql::external::brew() {
   p6df::modules::homebrew::cli::brew::install pgformatter
   p6df::modules::homebrew::cli::brew::install pgpdump
   p6df::modules::homebrew::cli::brew::install pgtoolkit
-  p6df::modules::homebrew::cli::brew::install pgtune
 
   p6df::modules::homebrew::cli::brew::install check_postgres
 
