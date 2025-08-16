@@ -32,7 +32,7 @@ p6df::modules::pgsql::external::brew() {
 
   p6df::modules::homebrew::cli::brew::install pg_top
   p6df::modules::homebrew::cli::brew::install pgbadger
-  p6df::modules::homebrew::cli::brew::install pgbouncer
+#  p6df::modules::homebrew::cli::brew::install pgbouncer
   p6df::modules::homebrew::cli::brew::install pgcli
   p6df::modules::homebrew::cli::brew::install pgformatter
   p6df::modules::homebrew::cli::brew::install pgpdump
