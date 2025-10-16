@@ -1,48 +1,32 @@
-# p6df-pgsql
+# P6's POSIX.2: p6df-pgsql
 
 ## Table of Contents
 
-
-### p6df-pgsql
-- [p6df-pgsql](#p6df-pgsql)
-  - [Badges](#badges)
-  - [Distributions](#distributions)
-  - [Summary](#summary)
-  - [Contributing](#contributing)
-  - [Code of Conduct](#code-of-conduct)
-  - [Usage](#usage)
-  - [Author](#author)
-
-### Badges
+## Badges
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/p6m7g8/p6df-pgsql)
-[![Mergify](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/p6m7g8/p6df-pgsql/&style=flat)](https://mergify.io)
-[![codecov](https://codecov.io/gh/p6m7g8/p6df-pgsql/branch/master/graph/badge.svg?token=14Yj1fZbew)](https://codecov.io/gh/p6m7g8/p6df-pgsql)
-[![Gihub repo dependents](https://badgen.net/github/dependents-repo/p6m7g8/p6df-pgsql)](https://github.com/p6m7g8/p6df-pgsql/network/dependents?dependent_type=REPOSITORY)
-[![Gihub package dependents](https://badgen.net/github/dependents-pkg/p6m7g8/p6df-pgsql)](https://github.com/p6m7g8/p6df-pgsql/network/dependents?dependent_type=PACKAGE)
+[![Mergify](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges//p6df-pgsql/&style=flat)](https://mergify.io)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](<https://gitpod.io/#https://github.com//p6df-pgsql>)
 
 ## Summary
 
 ## Contributing
 
-- [How to Contribute](CONTRIBUTING.md)
+- [How to Contribute](<https://github.com//.github/blob/main/CONTRIBUTING.md>)
 
 ## Code of Conduct
 
-- [Code of Conduct](https://github.com/p6m7g8/.github/blob/master/CODE_OF_CONDUCT.md)
+- [Code of Conduct](<https://github.com//.github/blob/main/CODE_OF_CONDUCT.md>)
 
 ## Usage
 
-
 ### Aliases
-
 
 ### Functions
 
-### p6df-pgsql:
+## p6df-pgsql
 
-#### p6df-pgsql/init.zsh:
+### p6df-pgsql/init.zsh
 
 - p6df::modules::pgsql::deps()
 - p6df::modules::pgsql::env::prompt::info()
@@ -50,23 +34,26 @@
 - p6df::modules::pgsql::home::symlink()
 - p6df::modules::pgsql::init(_module, dir)
 
+## p6df-pgsql/lib
 
-### p6df-pgsql/lib:
-
-#### p6df-pgsql/lib/cli.sh:
+### p6df-pgsql/lib/cli.sh
 
 - p6df::modules::pgsql::cli::start()
 - p6df::modules::pgsql::cli::stop()
 
+## Hierarchy
 
-
-## Hier
 ```text
 .
-└── cli.sh
+├── init.zsh
+├── lib
+│   └── cli.sh
+├── README.md
+└── share
 
-1 directory, 1 file
+3 directories, 3 files
 ```
+
 ## Author
 
 Philip M . Gollucci <pgollucci@p6m7g8.com>
