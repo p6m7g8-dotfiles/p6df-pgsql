@@ -27,11 +27,11 @@ p6df::modules::pgsql::external::brew() {
 #  done
 
 
-  p6df::modules::homebrew::cli::brew::install pgrouting
-  p6df::modules::homebrew::cli::brew::install postgis
+# p6df::modules::homebrew::cli::brew::install pgrouting
+#  p6df::modules::homebrew::cli::brew::install postgis
 
   p6df::modules::homebrew::cli::brew::install pg_top
-  p6df::modules::homebrew::cli::brew::install pgbadger
+#  p6df::modules::homebrew::cli::brew::install pgbadger
 #  p6df::modules::homebrew::cli::brew::install pgbouncer
   p6df::modules::homebrew::cli::brew::install pgcli
   p6df::modules::homebrew::cli::brew::install pgformatter
@@ -40,10 +40,10 @@ p6df::modules::pgsql::external::brew() {
 
   p6df::modules::homebrew::cli::brew::install check_postgres
 
-  p6df::modules::homebrew::cli::brew::install --cask pgadmin4
-  p6df::modules::homebrew::cli::brew::install --cask postico
-  p6df::modules::homebrew::cli::brew::install --cask dbeaver-community
-  p6df::modules::homebrew::cli::brew::install --cask datagrip
+#  p6df::modules::homebrew::cli::brew::install --cask pgadmin4
+#  p6df::modules::homebrew::cli::brew::install --cask postico
+#  p6df::modules::homebrew::cli::brew::install --cask dbeaver-community
+#  p6df::modules::homebrew::cli::brew::install --cask datagrip
 
   p6_return_void
 }
