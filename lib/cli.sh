@@ -4,7 +4,6 @@
 #
 # Function: p6df::modules::pgsql::cli::start()
 #
-#  Environment:	 LC_ALL
 #>
 ######################################################################
 p6df::modules::pgsql::cli::start() {
@@ -19,7 +18,6 @@ p6df::modules::pgsql::cli::start() {
 #
 # Function: p6df::modules::pgsql::cli::stop()
 #
-#  Environment:	 LC_ALL
 #>
 ######################################################################
 p6df::modules::pgsql::cli::stop() {

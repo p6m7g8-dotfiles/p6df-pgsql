@@ -78,7 +78,7 @@ p6df::modules::pgsql::init() {
 #
 # Function: p6df::modules::pgsql::home::symlink()
 #
-#  Environment:	 P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#  Environment:	 P6_DFZ_DATA_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::pgsql::home::symlink() {
