@@ -91,17 +91,19 @@ p6df::modules::pgsql::home::symlink() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::env::prompt::info()
+# Function: str str = p6df::modules::pgsql::prompt::lang()
+#
+#  Returns:
+#	str - str
 #
 #>
 ######################################################################
-p6df::modules::pgsql::env::prompt::info() {
+p6df::modules::pgsql::prompt::lang() {
 
-  local ver=$(postgres --version | head -1)
+  local ver=$(postgres --version | head -1 | awk '{print $3}')
+  local str="pg:$ver"
 
-  echo "pg: $ver"
-
-  p6_return_void
+  p6_return_str "$str"
 }
 
 # This formula has created a default database cluster with:
