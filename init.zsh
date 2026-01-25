@@ -23,27 +23,27 @@ p6df::modules::pgsql::external::brew() {
 
   local ver
 #  for ver in 13 14 15 16; do
-#    p6df::modules::homebrew::cli::brew::install postgresql@$ver
+#    p6df::core::homebrew::cli::brew::install postgresql@$ver
 #  done
 
 
-# p6df::modules::homebrew::cli::brew::install pgrouting
-#  p6df::modules::homebrew::cli::brew::install postgis
+# p6df::core::homebrew::cli::brew::install pgrouting
+#  p6df::core::homebrew::cli::brew::install postgis
 
-  p6df::modules::homebrew::cli::brew::install pg_top
-#  p6df::modules::homebrew::cli::brew::install pgbadger
-#  p6df::modules::homebrew::cli::brew::install pgbouncer
-  p6df::modules::homebrew::cli::brew::install pgcli
-  p6df::modules::homebrew::cli::brew::install pgformatter
-  p6df::modules::homebrew::cli::brew::install pgpdump
-  p6df::modules::homebrew::cli::brew::install pgtoolkit
+  p6df::core::homebrew::cli::brew::install pg_top
+#  p6df::core::homebrew::cli::brew::install pgbadger
+#  p6df::core::homebrew::cli::brew::install pgbouncer
+  p6df::core::homebrew::cli::brew::install pgcli
+  p6df::core::homebrew::cli::brew::install pgformatter
+  p6df::core::homebrew::cli::brew::install pgpdump
+  p6df::core::homebrew::cli::brew::install pgtoolkit
 
-  p6df::modules::homebrew::cli::brew::install check_postgres
+  p6df::core::homebrew::cli::brew::install check_postgres
 
-#  p6df::modules::homebrew::cli::brew::install --cask pgadmin4
-#  p6df::modules::homebrew::cli::brew::install --cask postico
-#  p6df::modules::homebrew::cli::brew::install --cask dbeaver-community
-#  p6df::modules::homebrew::cli::brew::install --cask datagrip
+#  p6df::core::homebrew::cli::brew::install --cask pgadmin4
+#  p6df::core::homebrew::cli::brew::install --cask postico
+#  p6df::core::homebrew::cli::brew::install --cask dbeaver-community
+#  p6df::core::homebrew::cli::brew::install --cask datagrip
 
   p6_return_void
 }
