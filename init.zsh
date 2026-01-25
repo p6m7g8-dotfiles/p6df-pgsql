@@ -100,7 +100,7 @@ p6df::modules::pgsql::home::symlink() {
 ######################################################################
 p6df::modules::pgsql::prompt::lang() {
 
-  local ver=$(postgres --version | head -1 | awk '{print $3}')
+  local ver=$(postgres --version | p6_filter_row_first 1 | p6_filter_column_pluck 3)
   local str="pg:$ver"
 
   p6_return_str "$str"
