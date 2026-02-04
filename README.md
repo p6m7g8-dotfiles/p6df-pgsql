@@ -39,6 +39,9 @@ TODO: Add a short summary of this module.
 - `p6df::modules::pgsql::external::brew()`
 - `p6df::modules::pgsql::home::symlink()`
 - `p6df::modules::pgsql::init(_module, dir)`
+  - Args:
+    - _module - 
+    - dir - 
 - `str str = p6df::modules::pgsql::prompt::lang()`
 
 #### p6df-pgsql/lib
