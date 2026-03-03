@@ -83,7 +83,7 @@ p6df::modules::pgsql::init() {
 ######################################################################
 p6df::modules::pgsql::home::symlink() {
 
-  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$P6_DFZ_DATA_DIR/.pgsqlrc"
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$HOME/.pgsqlrc"
 
   p6_return_void
 }
@@ -100,7 +100,7 @@ p6df::modules::pgsql::home::symlink() {
 ######################################################################
 p6df::modules::pgsql::prompt::lang() {
 
-  local ver=$(postgres --version | p6_filter_row_first 1 | p6_filter_column_pluck 3)
+  local ver=$(postgres --version 2>/dev/null| p6_filter_row_first 1 | p6_filter_column_pluck 3)
   local str="pg:$ver"
 
   p6_return_str "$str"
@@ -119,8 +119,6 @@ p6df::modules::pgsql::prompt::lang() {
 #
 # For compilers to find postgresql@14 you may need to set:
 #  export LDFLAGS="-L/opt/homebrew/opt/postgresql@14/lib"
-#  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@14/include"
-#
 # For pkg-config to find postgresql@14 you may need to set:
 #  export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@14/lib/pkgconfig"
 #
