@@ -78,7 +78,7 @@ p6df::modules::pgsql::init() {
 #
 # Function: p6df::modules::pgsql::home::symlink()
 #
-#  Environment:	 P6_DFZ_DATA_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#  Environment:	 HOME P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::pgsql::home::symlink() {
@@ -147,3 +147,17 @@ p6df::modules::pgsql::prompt::lang() {
 #  log_lock_waits = on
 #  log_temp_files = 0
 #  lc_messages = 'C'
+
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::mcp()
+#
+#>
+######################################################################
+p6df::modules::pgsql::mcp() {
+
+  p6_js_npm_global_install "@modelcontextprotocol/server-postgres"
+
+  p6_return_void
+}
