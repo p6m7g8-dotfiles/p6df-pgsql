@@ -9,6 +9,8 @@
 p6df::modules::pgsql::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6pgsql
+    neondatabase/agent-skills
+    supabase/agent-skills
   )
 }
 
