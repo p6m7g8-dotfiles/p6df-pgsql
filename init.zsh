@@ -93,6 +93,24 @@ p6df::modules::pgsql::home::symlink() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::pgsql::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR
+#>
+######################################################################
+p6df::modules::pgsql::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres"                                           "$HOME/.claude/skills/neon-postgres"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres-egress-optimizer"                         "$HOME/.claude/skills/neon-postgres-egress-optimizer"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/claimable-postgres"                                     "$HOME/.claude/skills/claimable-postgres"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/supabase/agent-skills/skills/supabase-postgres-best-practices"                           "$HOME/.claude/skills/supabase-postgres-best-practices"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: str str = p6df::modules::pgsql::prompt::lang()
 #
 #  Returns:
