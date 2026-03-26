@@ -23,25 +23,17 @@ p6df::modules::pgsql::deps() {
 ######################################################################
 p6df::modules::pgsql::external::brew() {
 
-  local ver
-#  for ver in 13 14 15 16; do
-#    p6df::core::homebrew::cli::brew::install postgresql@$ver
-#  done
+  p6df::core::homebrew::cli::brew::install postgresql@18
 
-
-# p6df::core::homebrew::cli::brew::install pgrouting
-#  p6df::core::homebrew::cli::brew::install postgis
-
-  p6df::core::homebrew::cli::brew::install pg_top
-#  p6df::core::homebrew::cli::brew::install pgbadger
-#  p6df::core::homebrew::cli::brew::install pgbouncer
   p6df::core::homebrew::cli::brew::install pgcli
   p6df::core::homebrew::cli::brew::install pgformatter
   p6df::core::homebrew::cli::brew::install pgpdump
-  p6df::core::homebrew::cli::brew::install pgtoolkit
-
   p6df::core::homebrew::cli::brew::install check_postgres
 
+#  p6df::core::homebrew::cli::brew::install pgrouting
+#  p6df::core::homebrew::cli::brew::install postgis
+#  p6df::core::homebrew::cli::brew::install pgbadger
+#  p6df::core::homebrew::cli::brew::install pgbouncer
 #  p6df::core::homebrew::cli::brew::install --cask pgadmin4
 #  p6df::core::homebrew::cli::brew::install --cask postico
 #  p6df::core::homebrew::cli::brew::install --cask dbeaver-community
@@ -68,7 +60,7 @@ p6df::modules::pgsql::init() {
 
   p6_bootstrap "$dir"
 
-  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@14"
+  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
   p6_env_export "PKG_CONFIG_PATH" "$postgres_dir/lib/pkgconfig"
   p6_path_if "$postgres_dir/bin"
 
@@ -127,25 +119,25 @@ p6df::modules::pgsql::prompt::lang() {
 }
 
 # This formula has created a default database cluster with:
-#  initdb --locale=C -E UTF-8 /opt/homebrew/var/postgresql@14
+#  initdb --locale=C -E UTF-8 /opt/homebrew/var/postgresql@18
 # For more details, read:
-#  https://www.postgresql.org/docs/14/app-initdb.html
+#  https://www.postgresql.org/docs/18/app-initdb.html
 #
-# postgresql@14 is keg-only, which means it was not symlinked into /opt/homebrew,
+# postgresql@18 is keg-only, which means it was not symlinked into /opt/homebrew,
 # because this is an alternate version of another formula.
 #
-# If you need to have postgresql@14 first in your PATH, run:
-#  echo 'export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"' >> ~/.zshrc
+# If you need to have postgresql@18 first in your PATH, run:
+#  echo 'export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"' >> ~/.zshrc
 #
-# For compilers to find postgresql@14 you may need to set:
-#  export LDFLAGS="-L/opt/homebrew/opt/postgresql@14/lib"
-# For pkg-config to find postgresql@14 you may need to set:
-#  export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@14/lib/pkgconfig"
+# For compilers to find postgresql@18 you may need to set:
+#  export LDFLAGS="-L/opt/homebrew/opt/postgresql@18/lib"
+# For pkg-config to find postgresql@18 you may need to set:
+#  export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@18/lib/pkgconfig"
 #
-# To start postgresql@14 now and restart at login:
-#  brew services start postgresql@14
+# To start postgresql@18 now and restart at login:
+#  brew services start postgresql@18
 # Or, if you don't want/need a background service you can just run:
-#  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14
+#  LC_ALL="C" /opt/homebrew/opt/postgresql@18/bin/postgres -D /opt/homebrew/var/postgresql@18
 
 # To have launchd start pgbouncer now and restart at login:
 #   brew services start pgbouncer

@@ -8,7 +8,7 @@
 ######################################################################
 p6df::modules::pgsql::cli::start() {
 
-  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14 start
+  LC_ALL="C" /opt/homebrew/opt/postgresql@18/bin/postgres -D /opt/homebrew/var/postgresql@18 start
 
   p6_return_void
 }
@@ -22,7 +22,7 @@ p6df::modules::pgsql::cli::start() {
 ######################################################################
 p6df::modules::pgsql::cli::stop() {
 
-  LC_ALL="C" /opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14 stop
+  LC_ALL="C" /opt/homebrew/opt/postgresql@18/bin/postgres -D /opt/homebrew/var/postgresql@18 stop
  
   p6_return_void
 }
