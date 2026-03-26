@@ -1,4 +1,4 @@
-name: PR Labeler
+name: Stale
 
 on:
   workflow_dispatch: {}
