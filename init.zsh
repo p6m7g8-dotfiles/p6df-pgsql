@@ -70,27 +70,14 @@ p6df::modules::pgsql::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::home::symlink()
-#
-#  Environment:	 HOME P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
-#>
-######################################################################
-p6df::modules::pgsql::home::symlink() {
-
-  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$HOME/.pgsqlrc"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
 # Function: p6df::modules::pgsql::home::symlinks()
 #
-#  Environment:	 HOME P6_DFZ_SRC_DIR
+#  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
 ######################################################################
 p6df::modules::pgsql::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.psqlrc" "$HOME/.psqlrc"
 
   p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres"                                           "$HOME/.claude/skills/neon-postgres"
   p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres-egress-optimizer"                         "$HOME/.claude/skills/neon-postgres-egress-optimizer"
