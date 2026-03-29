@@ -9,13 +9,12 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+  pull-requests: write
 
 jobs:
   claude-review:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      pull-requests: write
     steps:
       - name: Skip on queue refs
         if: github.event_name == 'merge_group' || github.event_name == 'push'
