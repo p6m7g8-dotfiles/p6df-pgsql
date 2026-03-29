@@ -171,5 +171,8 @@ p6df::modules::pgsql::mcp() {
 
   p6_js_npm_global_install "@modelcontextprotocol/server-postgres"
 
+  p6df::modules::anthropic::mcp::server::add "postgres" "npx" "-y" "@modelcontextprotocol/server-postgres"
+  p6df::modules::openai::mcp::server::add "postgres" "npx" "-y" "@modelcontextprotocol/server-postgres"
+
   p6_return_void
 }
