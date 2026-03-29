@@ -17,11 +17,11 @@ p6df::modules::pgsql::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::external::brew()
+# Function: p6df::modules::pgsql::external::brews()
 #
 #>
 ######################################################################
-p6df::modules::pgsql::external::brew() {
+p6df::modules::pgsql::external::brews() {
 
   p6df::core::homebrew::cli::brew::install postgresql@18
 
