@@ -187,6 +187,6 @@ p6df::modules::pgsql::mcp() {
 ######################################################################
 p6df::modules::pgsql::profile::mod() {
 
-  p6_return_words 'pgsql' "$PGHOST"
+  p6_return_words 'pgsql' '$PGHOST'
 }
 
