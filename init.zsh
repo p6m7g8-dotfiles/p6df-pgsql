@@ -45,23 +45,34 @@ p6df::modules::pgsql::external::brews() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::init(_module, dir)
-#
-#  Args:
-#	_module -
-#	dir -
+# Function: p6df::modules::pgsql::env::init()
 #
 #  Environment:	 HOMEBREW_PREFIX PKG_CONFIG_PATH
 #>
 ######################################################################
-p6df::modules::pgsql::init() {
+p6df::modules::pgsql::env::init() {
+
   local _module="$1"
-  local dir="$2"
-
-  p6_bootstrap "$dir"
-
+  local _dir="$2"
   local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
   p6_env_export "PKG_CONFIG_PATH" "$postgres_dir/lib/pkgconfig"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::path::init()
+#
+#  Environment:	 HOMEBREW_PREFIX
+#>
+######################################################################
+p6df::modules::pgsql::path::init() {
+
+  local _module="$1"
+  local _dir="$2"
+  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
   p6_path_if "$postgres_dir/bin"
 
   p6_return_void
@@ -77,8 +88,7 @@ p6df::modules::pgsql::init() {
 ######################################################################
 p6df::modules::pgsql::home::symlinks() {
 
-  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.psqlrc" "$HOME/.psqlrc"
-
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$HOME/.pgsqlrc"
   p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres"                                           "$HOME/.claude/skills/neon-postgres"
   p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres-egress-optimizer"                         "$HOME/.claude/skills/neon-postgres-egress-optimizer"
   p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/claimable-postgres"                                     "$HOME/.claude/skills/claimable-postgres"
@@ -163,3 +173,20 @@ p6df::modules::pgsql::mcp() {
 
   p6_return_void
 }
+
+######################################################################
+#<
+#
+# Function: words pgsql $PGHOST = p6df::modules::pgsql::profile::mod()
+#
+#  Returns:
+#	words - pgsql $PGHOST
+#
+#  Environment:	 PGHOST
+#>
+######################################################################
+p6df::modules::pgsql::profile::mod() {
+
+  p6_return_words 'pgsql' '$PGHOST'
+}
+
