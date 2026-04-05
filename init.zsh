@@ -1,5 +1,11 @@
 # shellcheck shell=bash
 ######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::deps()
+#
+#>
+######################################################################
 p6df::modules::pgsql::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6pgsql
@@ -8,6 +14,13 @@ p6df::modules::pgsql::deps() {
   )
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::env::init()
+#
+#  Environment:	 HOMEBREW_PREFIX PKG_CONFIG_PATH
+#>
 ######################################################################
 p6df::modules::pgsql::env::init() {
 
@@ -20,6 +33,13 @@ p6df::modules::pgsql::env::init() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::path::init()
+#
+#  Environment:	 HOMEBREW_PREFIX
+#>
+######################################################################
 p6df::modules::pgsql::path::init() {
 
   local _module="$1"
@@ -30,6 +50,13 @@ p6df::modules::pgsql::path::init() {
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
+#>
 ######################################################################
 p6df::modules::pgsql::home::symlinks() {
 
@@ -42,6 +69,12 @@ p6df::modules::pgsql::home::symlinks() {
   p6_return_void
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::external::brews()
+#
+#>
 ######################################################################
 p6df::modules::pgsql::external::brews() {
 
@@ -65,6 +98,12 @@ p6df::modules::pgsql::external::brews() {
 }
 
 ######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::mcp()
+#
+#>
+######################################################################
 p6df::modules::pgsql::mcp() {
 
   p6_js_npm_global_install "@modelcontextprotocol/server-postgres"
@@ -76,44 +115,21 @@ p6df::modules::pgsql::mcp() {
 }
 
 ######################################################################
+#<
+#
+# Function: words pgsql $PGHOST = p6df::modules::pgsql::profile::mod()
+#
+#  Returns:
+#	words - pgsql $PGHOST
+#
+#  Environment:	 PGHOST
+#>
+######################################################################
 p6df::modules::pgsql::profile::mod() {
 
   p6_return_words 'pgsql' '$PGHOST'
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::deps()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::external::brews()
-#
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::env::init()
-#
-#  Environment:	 HOMEBREW_PREFIX PKG_CONFIG_PATH
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::path::init()
-#
-#  Environment:	 HOMEBREW_PREFIX
-#>
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::home::symlinks()
-#
-#  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
-#>
 ######################################################################
 #<
 #
@@ -174,19 +190,3 @@ p6df::modules::pgsql::prompt::lang() {
 #  log_temp_files = 0
 #  lc_messages = 'C'
 
-######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::mcp()
-#
-#>
-######################################################################
-#<
-#
-# Function: words pgsql $PGHOST = p6df::modules::pgsql::profile::mod()
-#
-#  Returns:
-#	words - pgsql $PGHOST
-#
-#  Environment:	 PGHOST
-#>
