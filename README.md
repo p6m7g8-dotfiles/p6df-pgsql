@@ -17,9 +17,7 @@
 
 ## Summary
 
-p6df module for PostgreSQL: CLI tools (`pgcli`, `pgformatter`, `pg_top`),
-prompt integration, and MCP server (`@modelcontextprotocol/server-postgres` via npm)
-for AI-driven database querying and schema exploration.
+TODO: Add a short summary of this module.
 
 ## Contributing
 
@@ -38,14 +36,19 @@ for AI-driven database querying and schema exploration.
 ##### p6df-pgsql/init.zsh
 
 - `p6df::modules::pgsql::deps()`
-- `p6df::modules::pgsql::external::brew()`
-- `p6df::modules::pgsql::home::symlink()`
-- `p6df::modules::pgsql::init(_module, dir)`
+- `p6df::modules::pgsql::env::init(_module, _dir)`
   - Args:
     - _module
-    - dir
+    - _dir
+- `p6df::modules::pgsql::external::brews()`
+- `p6df::modules::pgsql::home::symlinks()`
 - `p6df::modules::pgsql::mcp()`
+- `p6df::modules::pgsql::path::init(_module, _dir)`
+  - Args:
+    - _module
+    - _dir
 - `str str = p6df::modules::pgsql::prompt::lang()`
+- `words pgsql = p6df::modules::pgsql::profile::mod()`
 
 #### p6df-pgsql/lib
 

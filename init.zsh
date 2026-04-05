@@ -17,7 +17,11 @@ p6df::modules::pgsql::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::env::init()
+# Function: p6df::modules::pgsql::env::init(_module, _dir)
+#
+#  Args:
+#	_module -
+#	_dir -
 #
 #  Environment:	 HOMEBREW_PREFIX PKG_CONFIG_PATH
 #>
@@ -35,7 +39,11 @@ p6df::modules::pgsql::env::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::pgsql::path::init()
+# Function: p6df::modules::pgsql::path::init(_module, _dir)
+#
+#  Args:
+#	_module -
+#	_dir -
 #
 #  Environment:	 HOMEBREW_PREFIX
 #>
@@ -117,10 +125,10 @@ p6df::modules::pgsql::mcp() {
 ######################################################################
 #<
 #
-# Function: words pgsql $PGHOST = p6df::modules::pgsql::profile::mod()
+# Function: words pgsql = p6df::modules::pgsql::profile::mod()
 #
 #  Returns:
-#	words - pgsql $PGHOST
+#	words - pgsql
 #
 #  Environment:	 PGHOST
 #>
