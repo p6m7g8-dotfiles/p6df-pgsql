@@ -1,11 +1,5 @@
 # shellcheck shell=bash
 ######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::deps()
-#
-#>
-######################################################################
 p6df::modules::pgsql::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6pgsql
@@ -15,11 +9,39 @@ p6df::modules::pgsql::deps() {
 }
 
 ######################################################################
-#<
-#
-# Function: p6df::modules::pgsql::external::brews()
-#
-#>
+p6df::modules::pgsql::env::init() {
+
+  local _module="$1"
+  local _dir="$2"
+  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
+  p6_env_export "PKG_CONFIG_PATH" "$postgres_dir/lib/pkgconfig"
+
+  p6_return_void
+}
+
+######################################################################
+p6df::modules::pgsql::path::init() {
+
+  local _module="$1"
+  local _dir="$2"
+  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
+  p6_path_if "$postgres_dir/bin"
+
+  p6_return_void
+}
+
+######################################################################
+p6df::modules::pgsql::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$HOME/.pgsqlrc"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres"                                           "$HOME/.claude/skills/neon-postgres"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres-egress-optimizer"                         "$HOME/.claude/skills/neon-postgres-egress-optimizer"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/claimable-postgres"                                     "$HOME/.claude/skills/claimable-postgres"
+  p6_file_symlink "$P6_DFZ_SRC_DIR/supabase/agent-skills/skills/supabase-postgres-best-practices"                           "$HOME/.claude/skills/supabase-postgres-best-practices"
+
+  p6_return_void
+}
+
 ######################################################################
 p6df::modules::pgsql::external::brews() {
 
@@ -43,23 +65,41 @@ p6df::modules::pgsql::external::brews() {
 }
 
 ######################################################################
+p6df::modules::pgsql::mcp() {
+
+  p6_js_npm_global_install "@modelcontextprotocol/server-postgres"
+
+  p6df::modules::anthropic::mcp::server::add "postgres" "npx" "-y" "@modelcontextprotocol/server-postgres"
+  p6df::modules::openai::mcp::server::add "postgres" "npx" "-y" "@modelcontextprotocol/server-postgres"
+
+  p6_return_void
+}
+
+######################################################################
+p6df::modules::pgsql::profile::mod() {
+
+  p6_return_words 'pgsql' '$PGHOST'
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::deps()
+#
+#>
+######################################################################
+#<
+#
+# Function: p6df::modules::pgsql::external::brews()
+#
+#>
+######################################################################
 #<
 #
 # Function: p6df::modules::pgsql::env::init()
 #
 #  Environment:	 HOMEBREW_PREFIX PKG_CONFIG_PATH
 #>
-######################################################################
-p6df::modules::pgsql::env::init() {
-
-  local _module="$1"
-  local _dir="$2"
-  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
-  p6_env_export "PKG_CONFIG_PATH" "$postgres_dir/lib/pkgconfig"
-
-  p6_return_void
-}
-
 ######################################################################
 #<
 #
@@ -68,35 +108,12 @@ p6df::modules::pgsql::env::init() {
 #  Environment:	 HOMEBREW_PREFIX
 #>
 ######################################################################
-p6df::modules::pgsql::path::init() {
-
-  local _module="$1"
-  local _dir="$2"
-  local postgres_dir="$HOMEBREW_PREFIX/opt/postgresql@18"
-  p6_path_if "$postgres_dir/bin"
-
-  p6_return_void
-}
-
-######################################################################
 #<
 #
 # Function: p6df::modules::pgsql::home::symlinks()
 #
 #  Environment:	 HOME P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DOTFILES_DIR
 #>
-######################################################################
-p6df::modules::pgsql::home::symlinks() {
-
-  p6_file_symlink "$P6_DFZ_SRC_P6M7G8_DOTFILES_DIR/p6df-pgsql/share/.pgsqlrc" "$HOME/.pgsqlrc"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres"                                           "$HOME/.claude/skills/neon-postgres"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/neon-postgres-egress-optimizer"                         "$HOME/.claude/skills/neon-postgres-egress-optimizer"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/neondatabase/agent-skills/skills/claimable-postgres"                                     "$HOME/.claude/skills/claimable-postgres"
-  p6_file_symlink "$P6_DFZ_SRC_DIR/supabase/agent-skills/skills/supabase-postgres-best-practices"                           "$HOME/.claude/skills/supabase-postgres-best-practices"
-
-  p6_return_void
-}
-
 ######################################################################
 #<
 #
@@ -164,17 +181,6 @@ p6df::modules::pgsql::prompt::lang() {
 #
 #>
 ######################################################################
-p6df::modules::pgsql::mcp() {
-
-  p6_js_npm_global_install "@modelcontextprotocol/server-postgres"
-
-  p6df::modules::anthropic::mcp::server::add "postgres" "npx" "-y" "@modelcontextprotocol/server-postgres"
-  p6df::modules::openai::mcp::server::add "postgres" "npx" "-y" "@modelcontextprotocol/server-postgres"
-
-  p6_return_void
-}
-
-######################################################################
 #<
 #
 # Function: words pgsql $PGHOST = p6df::modules::pgsql::profile::mod()
@@ -184,9 +190,3 @@ p6df::modules::pgsql::mcp() {
 #
 #  Environment:	 PGHOST
 #>
-######################################################################
-p6df::modules::pgsql::profile::mod() {
-
-  p6_return_words 'pgsql' '$PGHOST'
-}
-
